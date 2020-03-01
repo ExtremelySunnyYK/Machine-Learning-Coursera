@@ -34,6 +34,7 @@ X = [ones(m, 1) X];
 % p = round(sigmoid(X*all_theta));
 
 test = X*all_theta';
+% Largest Element in Each Matrix Row
 [M,p] = max(test, [], 2);
 
 

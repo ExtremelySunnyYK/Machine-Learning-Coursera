@@ -4,8 +4,12 @@ function p = predict(Theta1, Theta2, X)
 %   trained weights of a neural network (Theta1, Theta2)
 
 % Useful values
+% rows of X
 m = size(X, 1);
 num_labels = size(Theta2, 1);
+
+% Add bias unit to the X data matrix
+X = [ones(m, 1) X];
 
 % You need to return the following variables correctly 
 p = zeros(size(X, 1), 1);
@@ -21,8 +25,15 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Computing First layer
+layer_one = sigmoid(Theta1*X');
 
-
+% Adding bias unit
+layer_one = [ones(size(layer_one,2), 1) layer_one'];
+% Computing Second layer
+layer_two = sigmoid(Theta2*layer_one');
+% Largest Element in Each Matrix Row
+[M,p] = max(layer_two, [], 1);
 
 
 
