@@ -17,8 +17,9 @@ g = zeros(size(z));
 
 
 
+sigmoid_g = g = 1.0 ./ (1.0 + exp(-z));
 
-
+g  = sigmoid_g .* (1 - sigmoid_g);
 
 
 
